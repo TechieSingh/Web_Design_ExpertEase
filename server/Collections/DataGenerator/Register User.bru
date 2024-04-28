@@ -1,0 +1,20 @@
+meta {
+  name: Register User
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/expertease/users/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "email": "user20@example.com",
+      "password": "Password20!",
+      "first_Name": "Rachel",
+      "last_Name": "Garcia"
+    }
+}

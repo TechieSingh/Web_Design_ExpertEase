@@ -1,0 +1,17 @@
+meta {
+  name: unfollowTopic
+  type: http
+  seq: 7
+}
+
+post {
+  url: http://localhost:3000/expertease/users/topics/11/topics/unfollow
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "topicId" : 11
+  }
+}

@@ -1,0 +1,18 @@
+meta {
+  name: unlikeArticle
+  type: http
+  seq: 10
+}
+
+post {
+  url: http://localhost:3000/expertease/articles/replyke-articles/unlike
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "article_id":3,
+    "user_id": "2"
+  }
+}

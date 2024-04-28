@@ -1,0 +1,18 @@
+meta {
+  name: likeArticle
+  type: http
+  seq: 9
+}
+
+post {
+  url: http://localhost:3000/expertease/articles/replyke-articles/like
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "article_id":3,
+    "user_id": 3
+  }
+}

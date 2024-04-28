@@ -1,0 +1,15 @@
+meta {
+  name: getAllInterest
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:3000/api/interests
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhbnZlcmkuYUBub3J0aGVhc3Rlcm4uZWR1IiwiZmlyc3RfTmFtZSI6IiIsImxhc3RfTmFtZSI6IiIsImlhdCI6MTcxMzY1NzM0NywiZXhwIjoxNzEzNjYwOTQ3fQ.W2qGs_UsFi38MKH9VvP6HMFQ8Hy2HSUbaM7JFcPv6k4
+}

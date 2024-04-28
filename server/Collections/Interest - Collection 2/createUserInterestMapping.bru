@@ -1,0 +1,17 @@
+meta {
+  name: createUserInterestMapping
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:3000/expertease/users/interests/11/interests
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "interest_IDs" : [2,4]
+  }
+}

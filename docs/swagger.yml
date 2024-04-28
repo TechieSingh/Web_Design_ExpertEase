@@ -1,0 +1,907 @@
+openapi: 3.1.0
+info:
+  title: ExpertEase Platform API
+  description: API for ExpertEase that allows users to manage profiles, follow topics, view feeds, and interact with discussions, articles, and mentorship opportunities.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3001
+    description: Development server
+paths:
+  /users/register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegistrationRequest'
+            example:
+              userId: "user123"
+              username: "john_doe"
+              email: "john.doe@example.com"
+              password: "mypassword"
+      responses:
+        '200':
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRegistrationResponse'
+              example:
+                message: "User registered successfully."
+                userID: 123
+        '400':
+          description: Invalid request data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterUserError'
+              example:
+                error: "Invalid data for user registration"
+  /users/{userID}:
+    get:
+      summary: Get user profile
+      parameters:
+        - in: path
+          name: userID
+          required: true
+          description: The ID of the user whose profile is being retrieved.
+          schema:
+            type: integer
+            examples: 
+                - 123
+      responses:
+        '200':
+          description: User profile retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+              example:
+                userID: 123
+                username: "john_doe"
+                email: "john.doe@example.com"
+                bio: "I'm a software engineer interested in machine learning."
+                followedTopics: [1, 2, 3]
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserNotFoundError'
+              example:
+                error: "User not found"
+
+
+    patch:
+      summary: Update user profile
+      parameters:
+        - in: path
+          name: userID
+          required: true
+          description: The ID of the user whose profile is being updated.
+          schema:
+            type: integer
+            examples: 
+              - 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfileUpdateRequest'
+            example:
+              email: "updated_email@example.com"
+              bio: "Updated bio information."
+      responses:
+        '200':
+          description: User profile updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileUpdateSuccess'
+        '400':
+          description: Invalid request data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateProfileError'
+              example:
+                error: "Invalid data for updating user profile"
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserNotFoundError'
+              example:
+                error: "User not found"                
+  /users/{userID}/follow:
+    post:
+      summary: Follow a topic
+      parameters:
+        - in: path
+          name: userID
+          required: true
+          description: The ID of the user who is following a topic.
+          schema:
+            type: integer
+            examples: 
+                - 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FollowTopicRequest'
+            example:
+              topicID: 1
+      responses:
+        '200':
+          description: Topic followed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FollowTopicSuccess'
+
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserNotFoundError'
+              example:
+                error: "User not found"
+  /users/{userID}/unfollow:
+
+    post:
+      summary: Unfollow a topic
+      parameters:
+        - in: path
+          name: userID
+          required: true
+          description: The ID of the user who is unfollowing a topic.
+          schema:
+            type: integer
+            examples: 
+                - 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnfollowTopicRequest'
+            example:
+              topicID: 1
+      responses:
+        '200':
+          description: Topic unfollowed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnFollowTopicSuccess'
+
+        '404':
+          description: Topic or user not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserNotFoundError'
+              example:
+                error: "User not found"
+  /feeds/{userID}:
+
+    get:
+      summary: Get latest feeds for a user
+      parameters:
+        - in: path
+          name: userID
+          required: true
+          description: The ID of the user for whom feeds are being retrieved.
+          schema:
+            type: integer
+            examples: 
+                - 123
+      responses:
+        '200':
+          description: Feeds retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserFeeds'
+              example:
+                - id: 1
+                  content: "New article published!"
+                  createdBy: 456
+                  createdAt: "2024-03-20T12:00:00Z"
+                - id: 2
+                  content: "Discussion updated."
+                  createdBy: 789
+                  createdAt: "2024-03-20T13:00:00Z"
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserNotFoundError'
+              example:
+                error: "User not found"
+  /mentorship/createslots:
+
+    post:
+      summary: Create a mentorship slot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MentorshipOfferRequest'
+            example:
+              mentorID: 123
+              availability: "Monday, Wednesday, Friday - 10:00 AM to 12:00 PM"
+      responses:
+        '200':
+          description: Mentorship slot created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MentorshipOfferResponse'
+              example:
+                message: "Mentorship slot offered successfully."
+                offerID: 1
+        '400':
+          description: Invalid request data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfferMentorshipError'
+              example:
+                error: "Invalid data for offering mentorship slot"
+  /mentorship/{offerID}/book:
+    post:
+      summary: Book a mentorship slot
+      parameters:
+        - in: path
+          name: offerID
+          required: true
+          description: The ID of the mentorship slot being applied for.
+          schema:
+            type: integer
+            examples: 
+                - 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MentorshipBookingRequest'
+            example:
+              applicantID: 456
+              
+      responses:
+        '200':
+          description: Applied for mentorship successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MentorshipApplicationResponse'
+              example:
+                message: "Applied for mentorship successfully."
+                applicationID: 1
+
+        '404':
+          description: Mentorship slot not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MentorshipOfferNotFoundError'
+              example:
+                error: "Mentorship slot not found"
+  /articles:
+    post:
+      summary: Create a new article
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArticleCreationRequest'
+            example:
+              title: "Introduction to Machine Learning"
+              content: "In this article, we explore the fundamentals of machine learning."
+      responses:
+        '200':
+          description: Article created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleCreationResponse'
+              example:
+                articleID: 123
+                message: "Article created successfully."
+        '400':
+          description: Invalid request data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleCreationError'
+              example:
+                error: "Invalid data for article creation."
+  /articles/{articleID}/like:
+    post:
+      summary: Like an article
+      parameters:
+        - in: path
+          name: articleID
+          required: true
+          description: The ID of the article being liked.
+          schema:
+            type: integer
+            examples: 
+                - 123
+      responses:
+        '200':
+          description: Article liked successfully
+          content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/ArticleLikeResponse'
+          
+        '404':
+          description: Article not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleNotFoundError'
+  /articles/{articleID}/comment:
+    post:
+      summary: Comment on an article
+      parameters:
+        - in: path
+          name: articleID
+          required: true
+          description: The ID of the article being commented on.
+          schema:
+            type: integer
+            examples: 
+                - 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArticleCommentRequest'
+            example:
+              comment: "Great article! Thanks for sharing."
+      responses:
+        '200':
+          description: Comment recorded successfully
+          content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/ArticleCommentResponse'
+        '404':
+          description: Article not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleNotFoundError'
+  /topics/{topicID}/discussions:
+
+    post:
+      summary: Create a discussion under a topic
+      parameters:
+        - in: path
+          name: topicID
+          required: true
+          description: The ID of the topic under which the discussion is being created.
+          schema:
+            type: integer
+            examples: 
+                - 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiscussionCreationRequest'
+            example:
+              title: "Neural Networks Discussion"
+              content: "Let's discuss the latest advancements in neural networks."
+      responses:
+        '200':
+          description: Discussion created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscussionCreationResponse'
+              example:
+                discussionID: 456
+                message: "Discussion created successfully."
+
+        '404':
+          description: Topic not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopicNotFoundError'
+
+  /discussions/{discussionID}/like:
+
+    post:
+      summary: Like a discussion
+      parameters:
+        - in: path
+          name: discussionID
+          required: true
+          description: The ID of the discussion being liked.
+          schema:
+            type: integer
+            examples: 
+                - 456
+      responses:
+        '200':
+          description: Discussion liked successfully
+          content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/DiscussionLikeResponse'
+        
+        '404':
+          description: Discussion not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscussionNotFoundError'
+
+  /discussions/{discussionID}/comment:
+    post:
+      summary: Comment on a discussion
+      parameters:
+        - in: path
+          name: discussionID
+          required: true
+          description: The ID of the discussion being commented on.
+          schema:
+            type: integer
+            examples: 
+                - 456
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiscussionCommentRequest'
+            example:
+              comment: "Interesting discussion! I have a question regarding backpropagation."
+      responses:
+        '200':
+          description: Comment recorded successfully
+          content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/DiscussionCommentResponse'
+        '404':
+          description: Discussion not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscussionNotFoundError'
+components:
+  schemas:
+    UserRegistrationRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: The unique identifier for the user.
+          examples: 
+            - "user123"
+        username:
+          type: string
+          description: The username of the user.
+          examples: 
+            - "john_doe"
+        email:
+          type: string
+          format: email
+          description: The email address of the user.
+          examples: 
+            - "john.doe@example.com"
+        password:
+          type: string
+          description: The password for the user's account.
+          examples: 
+            - "mypassword"
+      required:
+        - userId
+        - username
+        - email
+        - password
+    UserRegistrationResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message confirming the successful registration.
+          examples: 
+            - "User registered successfully."
+        userID:
+          type: integer
+          description: The unique identifier assigned to the newly registered user.
+          examples: 
+            - 123
+    UserProfile:
+      type: object
+      properties:
+        userID:
+          type: integer
+          description: The unique identifier for the user.
+          examples: 
+            - 123
+        username:
+          type: string
+          description: The username of the user.
+          examples: 
+            - "john_doe"
+        email:
+          type: string
+          format: email
+          description: The email address of the user.
+          examples: 
+            - "john.doe@example.com"
+        bio:
+          type: string
+          description: The biography or description of the user.
+          examples: 
+            - "I'm a software engineer interested in machine learning."
+        followedTopics:
+          type: array
+          items:
+            type: integer
+          description: List of IDs of topics followed by the user.
+          examples: [1, 2, 3]
+    RegisterUserError:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message indicating that there was an issue with registering a user.
+          examples: 
+            - "Invalid data for user registration"
+    UserNotFoundError:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message indicating that the user was not found.
+          examples: 
+            - "User not found"
+    UserProfileUpdateRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          description: The updated email address of the user.
+          examples: 
+            - "updated_email@example.com"
+        bio:
+          type: string
+          description: The updated biography or description of the user.
+          examples: 
+            - "Updated bio information."    
+    UserProfileUpdateSuccess:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message indicating the successful update of the user profile.
+          examples: 
+            - "User profile updated successfully."
+    FollowTopicRequest:
+      type: object
+      properties:
+        topicID:
+          type: integer
+          description: The ID of the topic to be followed.
+          examples: 
+            - 1    
+    FollowTopicSuccess:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message indicating the successful follow of a topic.
+          examples: 
+            - "Topic followed successfully."
+    UpdateProfileError:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message indicating that there was an issue with updating a user's profile.
+          examples: 
+            - "Invalid data for updating user profile"
+    UnfollowTopicRequest:
+      type: object
+      properties:
+        topicID:
+          type: integer
+          description: The ID of the topic to be unfollowed.
+          examples: 
+            - 1
+    UnFollowTopicSuccess:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message indicating the successful unfollow of a topic.
+          examples: 
+            - "Topic ufollowed successfully."
+    UserFeeds:
+
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+            description: The unique identifier for the feed item.
+            examples: 
+                - 1
+          content:
+            type: string
+            description: The content of the feed item.
+            examples: 
+                - "New article published!"
+          createdBy:
+            type: integer
+            description: The ID of the user who created the feed item.
+            examples: 
+                - 456
+          createdAt:
+            type: string
+            format: date-time
+            description: The timestamp when the feed item was created.
+            examples: 
+                - "2024-03-20T12:00:00Z"
+    MentorshipOfferRequest:
+      type: object
+      properties:
+        mentorID:
+          type: integer
+          description: The ID of the user offering mentorship.
+          examples: 
+            - 123
+        details:
+          type: string
+          description: Details about the mentorship being offered.
+          examples: 
+            - "I'm offering mentorship in machine learning."
+        availability:
+          type: string
+          description: Availability schedule for the mentorship.
+          examples: 
+            - "Monday, Wednesday, Friday - 10:00 AM to 12:00 PM"
+    MentorshipOfferResponse:
+
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message confirming the successful offering of a mentorship slot.
+          examples: 
+            - "Mentorship slot offered successfully."
+        offerID:
+          type: integer
+          description: The unique identifier assigned to the offered mentorship slot.
+          examples: 
+            - 1
+    OfferMentorshipError:
+
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message indicating that there was an issue with offering a mentorship slot.
+          examples: 
+            - "Invalid data for offering mentorship slot"
+    MentorshipBookingRequest:
+      type: object
+      properties:
+        offerID:
+          type: integer
+          description: The ID of the mentorship slot being applied for.
+          examples: 
+            - 1
+        userID:
+          type: integer
+          description: The ID of the user applying for the mentorship slot.
+          examples: 
+            - 456
+        message:
+          type: string
+          description: A message accompanying the mentorship application.
+          examplse: 
+            - "I'm interested in your mentorship."
+      required:
+        - offerID
+        - userID    
+    MentorshipApplicationResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message confirming the successful application for mentorship.
+          examples: 
+            - "Applied for mentorship successfully."
+        applicationID:
+          type: integer
+          description: The unique identifier assigned to the mentorship application.
+          examples: 
+            - 1
+    MentorshipOfferNotFoundError:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message indicating that the mentorship slot was not found.
+          examples: 
+            - "Mentorship slot not found"
+    ArticleCreationRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: The title of the article.
+          examples: 
+            - "Introduction to Machine Learning"
+        content:
+          type: string
+          description: The content of the article.
+          examples: 
+            - "In this article, we explore the fundamentals of machine learning."
+      required:
+        - title
+        - content
+    ArticleCreationResponse:
+      type: object
+      properties:
+        articleID:
+          type: integer
+          description: The unique identifier assigned to the newly created article.
+          examples: 
+            - 123
+        message:
+          type: string
+          description: A message confirming the successful creation of the article.
+          examples: 
+            - "Article created successfully."
+      required:
+        - articleID
+        - message
+    ArticleCreationError:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message indicating that there was an issue with creating an article.
+          examples: 
+            - "Invalid data for article creation."
+    ArticleNotFoundError:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message indicating that the article was not found.
+          examples: 
+            - "Article not found."
+    ArticleCommentRequest:
+      type: object
+      properties:
+        comment:
+          type: string
+          description: The comment to be added to the article.
+          examples: 
+            - "Great article! Thanks for sharing."
+      required:
+        - comment
+    ArticleLikeResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message confirming the successful liking of the article.
+          examples: 
+            - "Article liked successfully."
+    ArticleCommentResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message confirming the successful record of comment
+          examples: 
+            - "Comment recorded successfully."
+    DiscussionCreationRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: The title of the discussion.
+          examples: 
+            - "Neural Networks Discussion"
+        content:
+          type: string
+          description: The content of the discussion.
+          examples: 
+            - "Let's discuss the latest advancements in neural networks."
+      required:
+        - title
+        - content
+
+    DiscussionCreationResponse:
+      type: object
+      properties:
+        discussionID:
+          type: integer
+          description: The unique identifier assigned to the newly created discussion.
+          examples: 
+            - 456
+        message:
+          type: string
+          description: A message confirming the successful creation of the discussion.
+          examples: 
+            - "Discussion created successfully."
+      required:
+        - discussionID
+        - message
+    TopicNotFoundError:
+
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message indicating that the topic was not found.
+          examples: 
+            - "Topic not found."
+    DiscussionLikeResponse:
+
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message confirming the successful liking of the article.
+          examples: 
+            - "Discussion liked successfully."
+
+    DiscussionNotFoundError:
+
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message indicating that the discussion was not found.
+          examples:
+            - "Discussion not found"
+    DiscussionCommentRequest:
+
+      type: object
+      properties:
+        comment:
+          type: string
+          description: The comment to be added to the discussion.
+          examples: 
+            - "Interesting discussion! I have a question regarding backpropagation."
+      required:
+        - comment
+    DiscussionCommentResponse:
+
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message confirming the successful record of comment
+          examples: 
+            - "Comment recorded successfully."

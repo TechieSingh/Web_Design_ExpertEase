@@ -1,0 +1,122 @@
+[
+  {
+    "email": "user01@example.com",
+    "password": "Password01!",
+    "first_Name": "John",
+    "last_Name": "Doe"
+  },
+  {
+    "email": "user02@example.com",
+    "password": "Password02!",
+    "first_Name": "Jane",
+    "last_Name": "Smith"
+  },
+  {
+    "email": "user03@example.com",
+    "password": "Password03!",
+    "first_Name": "Alice",
+    "last_Name": "Johnson"
+  },
+  {
+    "email": "user04@example.com",
+    "password": "Password04!",
+    "first_Name": "Bob",
+    "last_Name": "Brown"
+  },
+  {
+    "email": "user05@example.com",
+    "password": "Password05!",
+    "first_Name": "Charlie",
+    "last_Name": "Davis"
+  },
+  {
+    "email": "user06@example.com",
+    "password": "Password06!",
+    "first_Name": "David",
+    "last_Name": "Martinez"
+  },
+  {
+    "email": "user07@example.com",
+    "password": "Password07!",
+    "first_Name": "Ella",
+    "last_Name": "Lewis"
+  },
+  {
+    "email": "user08@example.com",
+    "password": "Password08!",
+    "first_Name": "Frank",
+    "last_Name": "Clark"
+  },
+  {
+    "email": "user09@example.com",
+    "password": "Password09!",
+    "first_Name": "Grace",
+    "last_Name": "Rodriguez"
+  },
+  {
+    "email": "user10@example.com",
+    "password": "Password10!",
+    "first_Name": "Hannah",
+    "last_Name": "Lopez"
+  },
+  {
+    "email": "user11@example.com",
+    "password": "Password11!",
+    "first_Name": "Ivan",
+    "last_Name": "Gonzalez"
+  },
+  {
+    "email": "user12@example.com",
+    "password": "Password12!",
+    "first_Name": "Julia",
+    "last_Name": "Wilson"
+  },
+  {
+    "email": "user13@example.com",
+    "password": "Password13!",
+    "first_Name": "Kyle",
+    "last_Name": "Anderson"
+  },
+  {
+    "email": "user14@example.com",
+    "password": "Password14!",
+    "first_Name": "Laura",
+    "last_Name": "Thomas"
+  },
+  {
+    "email": "user15@example.com",
+    "password": "Password15!",
+    "first_Name": "Max",
+    "last_Name": "Jackson"
+  },
+  {
+    "email": "user16@example.com",
+    "password": "Password16!",
+    "first_Name": "Nora",
+    "last_Name": "White"
+  },
+  {
+    "email": "user17@example.com",
+    "password": "Password17!",
+    "first_Name": "Oscar",
+    "last_Name": "Harris"
+  },
+  {
+    "email": "user18@example.com",
+    "password": "Password18!",
+    "first_Name": "Pamela",
+    "last_Name": "Martin"
+  },
+  {
+    "email": "user19@example.com",
+    "password": "Password19!",
+    "first_Name": "Quinn",
+    "last_Name": "Thompson"
+  },
+  {
+    "email": "user20@example.com",
+    "password": "Password20!",
+    "first_Name": "Rachel",
+    "last_Name": "Garcia"
+  }
+]

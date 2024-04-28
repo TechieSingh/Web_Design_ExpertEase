@@ -1,0 +1,22 @@
+meta {
+  name: Login API
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/expertease/users/login
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "email": "antirudh1@gmail.com",
+    "password": "Ani@12345"
+  }
+}

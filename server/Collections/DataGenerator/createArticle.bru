@@ -1,0 +1,19 @@
+meta {
+  name: createArticle
+  type: http
+  seq: 8
+}
+
+post {
+  url: http://localhost:3000/expertease/articles/topics/13
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+          "user_ID": 8,
+          "article_Content": "Magical Realism: Blending the Real and the Fantastic. We will explore how magical realism serves as a tool for exploring complex societal and personal themes through an enchanting literary lens.",
+          "article_Title": "Exploring 3 Magical Realism 3"
+      }
+}

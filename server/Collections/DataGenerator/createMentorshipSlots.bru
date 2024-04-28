@@ -1,0 +1,22 @@
+meta {
+  name: createMentorshipSlots
+  type: http
+  seq: 12
+}
+
+post {
+  url: http://localhost:3000/expertease/mentorship/1/mentorshipslots
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+  
+          "slot_Date": "2024-05-16",
+          "slot_StartTime": "15:00",
+          "slot_EndTime": "16:00",
+          "slot_Topic": "Advanced Node.js Techniques"
+  
+  }
+}

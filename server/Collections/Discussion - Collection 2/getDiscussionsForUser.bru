@@ -1,0 +1,15 @@
+meta {
+  name: getDiscussionsForUser
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:3000/expertease/articles/1?sortBy=likes
+  body: none
+  auth: none
+}
+
+query {
+  sortBy: likes
+}

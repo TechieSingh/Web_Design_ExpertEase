@@ -1,0 +1,19 @@
+meta {
+  name: fetchAllTopicsForUser
+  type: http
+  seq: 7
+}
+
+get {
+  url: http://localhost:3000/api/users/topics?search=Thermodynamics
+  body: none
+  auth: bearer
+}
+
+query {
+  search: Thermodynamics
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhbnZlcmkuYUBub3J0aGVhc3Rlcm4uZWR1IiwiZmlyc3RfTmFtZSI6IiIsImxhc3RfTmFtZSI6IiIsImlhdCI6MTcxMzY1NzM0NywiZXhwIjoxNzEzNjYwOTQ3fQ.W2qGs_UsFi38MKH9VvP6HMFQ8Hy2HSUbaM7JFcPv6k4
+}

@@ -1,0 +1,15 @@
+meta {
+  name: searchTopic
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:3000/expertease/topics/filter?topic_Name=Complexity
+  body: none
+  auth: none
+}
+
+query {
+  topic_Name: Complexity
+}

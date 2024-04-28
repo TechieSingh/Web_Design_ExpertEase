@@ -1,0 +1,23 @@
+meta {
+  name: updateMeeting
+  type: http
+  seq: 7
+}
+
+patch {
+  url: http://localhost:3000/api/mentorship/mentorshipslots/74769359531
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhbnZlcmkuYUBub3J0aGVhc3Rlcm4uZWR1IiwiZmlyc3RfTmFtZSI6ImFNSVQiLCJsYXN0X05hbWUiOiJBIiwiaWF0IjoxNzEzNzM3OTU5LCJleHAiOjE3MTM3NDE1NTl9.X7QBO1r49X7X-nuYWXAfTLJeUYPgMlt7LtS6juesQNc
+}
+
+body:json {
+  {
+    "start_time": "2024-05-21T15:44:07Z",
+    "topic" : "Zoome meeting edited 2",
+    "duration": 30
+  }
+}

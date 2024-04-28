@@ -1,0 +1,21 @@
+meta {
+  name: followTopic
+  type: http
+  seq: 8
+}
+
+post {
+  url: http://localhost:3000/api/users/topics/follow
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhbnZlcmkuYUBub3J0aGVhc3Rlcm4uZWR1IiwiZmlyc3RfTmFtZSI6IiIsImxhc3RfTmFtZSI6IiIsImlhdCI6MTcxMzY1MTg0MywiZXhwIjoxNzEzNjU1NDQzfQ.oSezNLHOUUavpk93AQ2cdlVXs5GzZHI96fqEQHkw2lg
+}
+
+body:json {
+  {
+    "newTopicId" : 4
+  }
+}

@@ -1,0 +1,17 @@
+meta {
+  name: createNewInterest
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/expertease/interests/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "interest_Name": "Pyschology"
+  }
+}

@@ -1,0 +1,22 @@
+meta {
+  name: createDiscussion
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/api/articles/topics/1
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhbnZlcmkuYUBub3J0aGVhc3Rlcm4uZWR1IiwiZmlyc3RfTmFtZSI6IiIsImxhc3RfTmFtZSI6IiIsImlhdCI6MTcxMzY1NzM0NywiZXhwIjoxNzEzNjYwOTQ3fQ.W2qGs_UsFi38MKH9VvP6HMFQ8Hy2HSUbaM7JFcPv6k4
+}
+
+body:json {
+  {
+    "discussion_Content": "Magical Realism: Blending the Real and the Fantastic. We will explore how magical realism serves as a tool for exploring complex societal and personal themes through an enchanting literary lens.",
+    "discussion_Title": "Exploring Magical Realism"
+  }
+}

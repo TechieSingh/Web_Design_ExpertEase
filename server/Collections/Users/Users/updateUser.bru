@@ -1,0 +1,18 @@
+meta {
+  name: updateUser
+  type: http
+  seq: 5
+}
+
+patch {
+  url: http://localhost:3000/expertease/users/11/profile
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "bio": "Aspiring "
+  
+  }
+}

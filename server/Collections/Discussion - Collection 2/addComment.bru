@@ -1,0 +1,19 @@
+meta {
+  name: addComment
+  type: http
+  seq: 7
+}
+
+post {
+  url: http://localhost:3000/expertease/articles/replyke-comments
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "user_ID": 4,
+    "comment_body": "Oh thats really interesting 2",
+    "article_id":3
+  }
+}

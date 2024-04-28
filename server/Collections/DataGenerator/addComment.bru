@@ -1,0 +1,18 @@
+meta {
+  name: addComment
+  type: http
+  seq: 11
+}
+
+post {
+  url: http://localhost:3000/expertease/discussions/31/comments
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "user_ID": 4,
+    "comment_content": "Oh thats really interesting 2"
+  }
+}

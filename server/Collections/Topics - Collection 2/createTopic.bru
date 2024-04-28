@@ -1,0 +1,20 @@
+meta {
+  name: createTopic
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/expertease/topics
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "topic_Name": "Astrophysics - II",
+    "topic_Description": "Discussions related to Astrophysics",
+    "topic_Photo" : "image string",
+    "interest_ID" : 5
+  }
+}

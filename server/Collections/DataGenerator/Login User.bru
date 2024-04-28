@@ -1,0 +1,18 @@
+meta {
+  name: Login User
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/expertease/users/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "user20@example.com",
+    "password": "Password20!"
+  }
+}

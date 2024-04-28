@@ -1,0 +1,23 @@
+meta {
+  name: createMeeting
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/api/mentorship/mentorshipslots
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhbnZlcmkuYUBub3J0aGVhc3Rlcm4uZWR1IiwiZmlyc3RfTmFtZSI6IlByYXNoYW50aCIsImxhc3RfTmFtZSI6IkFudmVyaSIsImlhdCI6MTcxMzgzNzAyMiwiZXhwIjoxNzEzODQwNjIyfQ.S4GyI-aINFu0iUNNdaJz_hv1mQAvFY-WrkTu9p7gnOQ
+}
+
+body:json {
+  {
+    "topic":"Zoom Meeting 3",
+    "start_time": "2024-04-21T15:44:07Z",
+    "duration": 45
+  }
+}

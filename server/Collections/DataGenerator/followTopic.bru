@@ -1,0 +1,17 @@
+meta {
+  name: followTopic
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:3000/expertease/users/topics/21/topics/add
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "newTopicId" : 6
+  }
+}

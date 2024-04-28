@@ -1,0 +1,53 @@
+{
+    "slots": [
+      {
+        "id": 1,
+        "topic": "Painting",
+        "startTime": "2024-06-15T04:00:00",
+        "endTime": "2024-06-15T18:00:00",
+        "title": "Oil painting",
+        "ZoomLink": "https://zoom.us/j/1234567890?pwd=QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
+      }
+    ],
+    "upcomingMeetings": [
+      {
+        "id": 1,
+        "name": "John Doe",
+        "topic": "Painting",
+        "title": "Oil painting",
+        "startTime": "2024-06-15T04:00:00",
+        "endTime": "2024-06-15T18:00:00",
+        "ZoomLink": "https://zoom.us/j/1234567890?pwd=QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
+      },
+      {
+        "id": 2,
+        "name": "Jane Doe",
+        "topic": "Sculpture",
+        "title": "Sculpture Workshop",
+        "startTime": "2024-06-16T10:00:00",
+        "endTime": "2024-06-15T18:00:00",
+        "ZoomLink": "https://zoom.us/j/1234567890?pwd=QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
+      }
+    ],
+    "bookSlots": [
+      {
+        "id": 3,
+        "name": "Lalu Prasad Yadav",
+        "topic": "Drawing",
+        "title": "Drawing Class",
+        "startTime": "2024-06-17T15:00:00",
+        "endTime": "2024-06-15T18:00:00",
+        "ZoomLink": "https://zoom.us/j/1234567890?pwd=QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
+      },
+      {
+        "id": 4,
+        "name": "Nitis Kumar",
+        "topic": "Photography",
+        "title": "Photography Workshop",
+        "startTime": "2024-06-18T13:00:00",
+        "endTime": "2024-06-15T18:00:00",
+        "ZoomLink": "https://zoom.us/j/1234567890?pwd=QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
+      }
+    ]
+  }
+  
